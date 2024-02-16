@@ -1,6 +1,6 @@
 ---
-title: "Sample Report - Data Science Capstone"
-author: "Student name"
+title: "Missing Data and Imputation- Data Science Capstone"
+author: "Dheeraj Reddy"
 date: '`r Sys.Date()`'
 format:
   html:
@@ -19,87 +19,105 @@ editor:
 
 ## Introduction
 
-### What is "mehtod"?
+Missing Data & Imputation
 
-This is an introduction to Kernel regression, which is a non-parametric
-estimator that estimates the conditional expectation of two variables
-which is random. The goal of a kernel regression is to discover the
-non-linear relationship between two random variables. To discover the
-non-linear relationship, kernel estimator or kernel smoothing is the
-main method to estimate the curve for non-parametric statistics. In
-kernel estimator, weight function is known as kernel function
-[@efr2008]. Cite this paper [@bro2014principal]. The GEE [@wang2014].
+Overview:
 
-This is my work and I want to add more work...
+I have studied few papers out of which two papers grabbed my interest. So i have decided to provide the summary for these papers based on my understanding. The papers are as follows.
 
-### Related work
+A Comparison of the Effects of Data Imputation Methods on Model Performance
 
-This section is going to cover the literature review...
+Imputation methods for incomplete data
 
-## Methods
+Introduction
 
-The common non-parametric regression model is
-$Y_i = m(X_i) + \varepsilon_i$, where $Y_i$ can be defined as the sum of
-the regression function value $m(x)$ for $X_i$. Here $m(x)$ is unknown
-and $\varepsilon_i$ some errors. With the help of this definition, we
-can create the estimation for local averaging i.e. $m(x)$ can be
-estimated with the product of $Y_i$ average and $X_i$ is near to $x$. In
-other words, this means that we are discovering the line through the
-data points with the help of surrounding data points. The estimation
-formula is printed below [@R-base]:
+The Dataset in which some of the data is missing and disrupts the completeness of the data is know as missing data.
 
-$$
-M_n(x) = \sum_{i=1}^{n} W_n (X_i) Y_i  \tag{1}
-$$ $W_n(x)$ is the sum of weights that belongs to all real numbers.
-Weights are positive numbers and small if $X_i$ is far from $x$.
+The missing data in a dataset leads to incorrect computations, incorrect output for the created pipelines leading to inaccurate predictions which could ultimately leading to downfall of the business.
 
-Another equation:
+To overcome this there are several imputations methods that are used.
 
-$$
-y_i = \beta_0 + \beta_1 X_1 +\varepsilon_i
-$$
+Few data imputation techniques known are -
 
-## Analysis and Results
+Next or Previous Value 
 
-### Data and Visualization
+K Nearest Neighbors
 
-A study was conducted to determine how...
+Maximum or Minimum Value
 
-```{r, warning=FALSE, echo=T, message=FALSE}
-# loading packages 
-library(tidyverse)
-library(knitr)
-library(ggthemes)
-library(ggrepel)
-library(dslabs)
-```
+Missing Value Prediction
 
-```{r, warning=FALSE, echo=TRUE}
-# Load Data
-kable(head(murders))
+Most Frequent Value
 
-ggplot1 = murders %>% ggplot(mapping = aes(x=population/10^6, y=total)) 
+Average or Linear Interpolation
 
-  ggplot1 + geom_point(aes(col=region), size = 4) +
-  geom_text_repel(aes(label=abb)) +
-  scale_x_log10() +
-  scale_y_log10() +
-  geom_smooth(formula = "y~x", method=lm,se = F)+
-  xlab("Populations in millions (log10 scale)") + 
-  ylab("Total number of murders (log10 scale)") +
-  ggtitle("US Gun Murders in 2010") +
-  scale_color_discrete(name = "Region")+
-      theme_bw()
-  
+(Rounded) Mean or Moving Average or Median Value
 
-```
+Fixed Value
 
-### Statistical Modeling
+Using these methods/techniques there are few papers demonstrated using the actual data.
 
-```{r}
+Paper Summarization
 
-```
+Paper - 1
 
-### Conclusion
+This paper focuses on comparing various data imputation methods and Regression models. These Imputation methods are compared to find if the data is accurate, and this provides the major need in considering the data imputation and prediction accuracy while choosing an imputation method. Missing data leads to information loss and reduce the model performance, there are different methods that are used in replacing missing data.There are seven Imputation methods and three Regression models, that are used in this paper.
 
-## References
+Imputation methods:-
+
+Linear Interpolation, Mean Imputation, K-Nearest Neighbor (KNN), Singular Value Decomposition (SVD), Random Forest (RandomForest), Multiple Imputation by Chained Equations (MICE) and Amelia.
+
+Regression Models:-
+
+Linear Regression, RandomForest Regression and Artificial Neural Net (ANN) Regression
+
+This paper provides information on the complex relationship between imputation and prediction model accuracies, convincing analysts to carefully choose imputation methods based on their specific data analysis.
+
+Paper - 2
+
+This paper provides information on the incomplete data or missing data, which leads to challenges in data analysis. It provides information on some of the common solutions such as:-
+
+Discarding the instances having missing values (i.e. list wise deletion), it reduce the sample sizes available for analysis and ignores the mechanism causing the missingness.
+
+<!-- -->
+
+Imputation of missing values from available data. There are three different mechanism of missing data induction, they are:- Missing Completely at Random (MCAR), Missing at Random (MAR) and Not Missing at Random(NMAR)
+
+The information about the imputation methods used for missing value calculation is briefly discussed in the paper based on two imputation methods
+
+Mean or Mode Single imputation(MMSI)
+
+Expectation Maximization Single imputation(EMSI)
+
+Conclusion:-
+
+Due to the missing data potential to affect the precision and efficiency of predictive models, both studies emphasize the importance of addressing missing data in datasets.
+
+In Paper 1, it is emphasized how important it is to carefully choose imputation techniques based on the particular requirements of the data analysis, taking into account the accuracy of the prediction models as well as imputation.
+
+Paper - 2 presents mechanisms of missing data induction and examines standard approaches to missing data handling.
+
+Putting together both the papers, it is clear that selecting an appropriate imputation method improvises the workings of missing data mechanisms which are critical in producing accurate data analysis results. To improve the reliability of their analyses and predictions, researchers and analysts working with incomplete datasets should take these factors into consideration.
+
+References
+
+V. H. Umathe and G. Chaudhary, "Imputation methods for incomplete data," 2015 International Conference on Innovations in Information, Embedded and Communication Systems (ICIIECS), Coimbatore, India, 2015, pp. 1-4, doi: 10.1109/ICIIECS.2015.7193063.W. Kim, W. Cho, J. Choi, J. Kim, C. Park and J. Choo, "A Comparison of the Effects of Data Imputation Methods on Model Performance," 2019 21st International Conference on Advanced Communication Technology (ICACT), PyeongChang, Korea (South), 2019, pp. 592-599, doi: 10.23919/ICACT.2019.8702000.
+
+Paper 3 - A Missing Data Imputation Method With Distance Function
+
+The method of association rule mining which identifies correlations between data in big databases is the main topic of this paper. Rule-based Imputation with Distance function RID is the name of the association rule-based imputation technique that is suggested in this paper. RID aims to address the challenge of selecting inappropriate rules in association rule mining by employing a lower threshold and a distance function to assess the impact of data record similarity. The RID algorithm includes the production of association rules, the construction of sets of imputation rules, and the application of a distance function to measure how similar the rules and the missing data are. The experimental results on the Census income dataset show that RID outperforms other methods such as k-NN, decision tree-based imputation, and a hybrid method at various data missing rates.
+
+Paper 4 - A Study on Missing Data Imputation Methods for Improving Hourly Solar DatasetThe paper identifies different types of missing data, including Missing Completely At Random (MCAR), Missing At Random (MAR), and Not Missing At Random (NMAR), and discusses their implications. The study shows the impact of missing data on forecasting performance and the need for effective data imputation methods. This paper provides an overview of various imputation methods, categorizing them as statistical, machine learning, and hybrid. The hybrid methods combine statistical and machine learning techniques to capitalize on their respective strengths. The Random Forest - MICE method is highlighted as a hybrid imputation method, and the paper compares its performance to other traditional methods like mean or mode imputation. The RF-MICE method is used for imputation to address the problem of missing data. The study then uses a Long Short-Term Memory network to forecast PV power and evaluates performance using Root Mean Square Error. The results show that RF-MICE outperforms 16 conventional imputation techniques in terms of RMSE, prompting the authors to state that effective imputation of missing data improves PV power generation forecasting, with RF-MICE standing out as a particularly promising method.References:-K. -F. Jea, C. -W. Hsu and L. -Y. Tang, "A Missing Data Imputation Method With Distance Function," 2018 International Conference on Machine Learning and Cybernetics (ICMLC), Chengdu, China, 2018, pp. 450-455, doi: 10.1109/ICMLC.2018.8526985.URL: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8526985&isnumber=8526922
+
+Q. -T. Phan, Y. -K. Wu, Q. -D. Phan and H. -Y. Lo, "A Study on Missing Data Imputation Methods for Improving Hourly Solar Dataset," 2022 8th International Conference on Applied System Innovation (ICASI), Nantou, Taiwan, 2022, pp. 21-24, doi: 10.1109/ICASI55125.2022.9774453.URL: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9774453&isnumber=9774395
+
+Paper 5 - Missing Values Imputation Framework for Mixed Datasets
+
+This paper provides information about data mining and highlights how important it is to handle missing values in an effective manner during the process. It addresses the difficulties posed by missing values and looks into potential solutions, concentrating in particular on machine learning and statistical methods for imputation. The study suggests a hybrid approach to bee-based imputation, which combines the use of mean for numerical data and mode for categorical data in bee-based imputation. The paper is organized with a background and related works section that provides an overview of the field and reviews popular techniques like Multivariate Imputation by Chained Equations (MICE) and K-Nearest Neighbor (KNN) imputation. The "Proposed Algorithm" section describes the hybrid bees-based imputation method that is being suggested. It explains how scout bees, following bees, solutions, and fitness functions are used to impute missing values. The paper then uses a heart attack possibility dataset from Kaggle to present an experimental design that compares the suggested method with the state-of-the-art methods (MICE and KNN). The findings demonstrate that, for datasets with varying percentages of missing values, the hybrid bee imputation performs more accurately than alternative techniques.
+
+
+Paper 6 - Missing Values Imputation in Food Consumption: An Analytical Study
+
+The difficulties posed by missing values in data sets are covered in this paper, along with their various causes and the importance of these issues for statistics, machine learning, and data analysis. It investigates the significance of addressing missing data in various applications and compares various imputation methods. It delves into the visualization of dataset completeness, using bar charts, null value matrices, heatmaps, and dendrograms to provide insights into the distribution of missing data. The paper goes over the iterative imputation method, KNN imputation method, and median imputation method in depth, explaining their applications and characteristics. A section compares the different methods for imputation of missing data, discussing the benefits and drawbacks of each. It emphasizes the importance of carefully selecting imputation methods to preserve feature relationships while avoiding changes to the underlying data distribution. Several visualization techniques for understanding missing values in datasets are also presented, such as bar charts and matrices.
+
+ReferencesK. Chungnoy and P. Songmuang, "Missing Values Imputation Framework for Mixed Datasets," 2023 IEEE International Conference on Cybernetics and Innovations (ICCI), phetchaburi, Thailand, 2023, pp. 1-5, doi: 10.1109/ICCI57424.2023.10111846.URL: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10111846&isnumber=10111844A. K. Tripathi, H. Saini and G. Rathee, "Missing Values Imputation in Food Consumption: An Analytical Study," 2021 6th International Conference on Signal Processing, Computing and Control (ISPCC), Solan, India, 2021, pp. 303-307, doi: 10.1109/ISPCC53510.2021.9609371.URL: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9609371&isnumber=9609334
